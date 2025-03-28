@@ -24,8 +24,7 @@ function setup(){
 function draw(){
     background(240);
 
-     //60度かたむける（X軸）
-     rotateX(60);
+    orbitControl();
 
     waveform = fft.waveform();
 
@@ -37,20 +36,27 @@ function draw(){
         //一旦保存
         push();
 
-        //座標の基準を移動する
-        translate(150, 0, 0);
 
         //大きさ
-        let size = waveform[i] *60;
+        let scaledWaveform = map(waveform[i], -1, 1, 0.1, 0.6); // 値を0.4〜0.6にスケール
+        let size = max(scaledWaveform * 450);
 
         if(size>50){
-            fill(0,220,220);
+            fill(255,253,208);
         }
         else{
-            fill(0,220,220);
+            fill(255,253,208);
         }
 
+        //土星本体
         sphere(size, 100,100);
+
+        //環っか
+        push();
+        
+        pop();
+    }
+        pop();
 
         //一時保存を呼び出す
         pop();
