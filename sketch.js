@@ -13,7 +13,7 @@ function setup(){
 
     angleMode(DEGREES);
 
-    fft = new p5.FFT(0.8, 64);
+    fft = new p5.FFT(0.8, 32);
 
     //音量制限
     sound.amp(0.2);
@@ -41,7 +41,7 @@ function draw(){
         translate(150, 0, 0);
 
         //大きさ
-        let size = waveform[i] *500;
+        let size = waveform[i] *60;
 
         if(size>50){
             fill(0,220,220);
@@ -50,7 +50,7 @@ function draw(){
             fill(0,220,220);
         }
 
-        box(5, 5 ,5 + size);
+        sphere(size, 100,100);
 
         //一時保存を呼び出す
         pop();
