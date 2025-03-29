@@ -58,18 +58,17 @@ function draw(){
         sphere(size, 100,100);
 
         //土星の輪
-        push();
-        noFill();
-        stroke(255, 255, 255); // 楕円の色
-        strokeWeight(30); // 楕円の線の太さ
-        ellipse(0, 0, size * 3, size * 3 ); // 楕円を描画
-        pop();
+        push()
+        noStroke()
+        fill(255);
+        torus(size+150, 10);
+        fill(200);
+        torus(size+130, 10);
+        pop()
 
         //一時保存を呼び出す
         pop();
     }
-
-        
 }
 
 function mouseClicked(){
