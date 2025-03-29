@@ -60,7 +60,7 @@ function draw(){
 
         //一時保存を呼び出す
         pop();
-    }
+    
 }
 
 function mouseClicked(){
