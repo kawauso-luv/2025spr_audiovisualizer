@@ -27,18 +27,22 @@ function draw(){
 
     ambientLight(60);
 
+    ambientLight(0, 0, 60);
     pointLight(0, 255, 255, -250, 0, 250);
+    directionalLight(255, 255, 0, 0, 0, -1);
     
 
       // カメラの設定
-    camera(
-        // カメラの位置（x, y, z）
-        cos(frameCount * 0.6) * 200,600, sin(frameCount * 0.9) * 800, 
-        // カメラが写す画面の中心となる位置（x, y, z）
-        0, 0, 0,
-        // カメラ自身の向き（x, y, z）
-        0, 1, 0
-    );
+        camera(
+            // カメラの位置（x, y, z）
+            cos(frameCount * 0.5) * 650, // x軸方向に動く
+            sin(frameCount * 0.3) * 600, // y軸方向に動く
+            sin(frameCount * 0.3) * 1000, // z軸方向に動く
+            // カメラが写す画面の中心となる位置（x, y, z）
+            0, 0, 0,
+            // カメラ自身の向き（x, y, z）
+            0, 1, 0
+        );
 
 
     // X軸に回転させる
