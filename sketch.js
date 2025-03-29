@@ -25,12 +25,21 @@ function setup(){
 function draw(){
     background(0);
 
-    orbitControl();
-
     ambientLight(60);
 
     pointLight(0, 255, 255, -250, 0, 250);
     
+
+      // カメラの設定
+    camera(
+        // カメラの位置（x, y, z）
+        cos(frameCount * 0.6) * 200,600, sin(frameCount * 0.9) * 800, 
+        // カメラが写す画面の中心となる位置（x, y, z）
+        0, 0, 0,
+        // カメラ自身の向き（x, y, z）
+        0, 1, 0
+    );
+
 
     // X軸に回転させる
     rotateX(frameCount * 0.01);
