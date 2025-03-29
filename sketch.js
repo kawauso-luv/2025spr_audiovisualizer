@@ -4,6 +4,7 @@ let amp;
 let waveform;
 let angle = 0;
 
+
 function preload(){
     sound = loadSound('../../asset/sound/sample.mp3');
 }
@@ -18,13 +19,24 @@ function setup(){
     //音量制限
     sound.amp(0.2);
 
-    noStroke();
+   
 }
 
 function draw(){
-    background(240);
+    background(0);
 
     orbitControl();
+
+    ambientLight(60);
+
+    pointLight(0, 255, 255, -250, 0, 250);
+    
+
+    // X軸に回転させる
+    rotateX(frameCount * 0.01);
+
+    // Y軸に回転させる
+    rotateY(frameCount * 0.01);
 
     waveform = fft.waveform();
 
@@ -41,26 +53,23 @@ function draw(){
         let scaledWaveform = map(waveform[i], -1, 1, 0.1, 0.6); // 値を0.4〜0.6にスケール
         let size = max(scaledWaveform * 450);
 
-        if(size>50){
-            fill(255,253,208);
-        }
-        else{
-            fill(255,253,208);
-        }
 
         //土星本体
         sphere(size, 100,100);
 
-        //環っか
+        //土星の輪
         push();
-        
-        pop();
-    }
+        noFill();
+        stroke(255, 255, 255); // 楕円の色
+        strokeWeight(30); // 楕円の線の太さ
+        ellipse(0, 0, size * 3, size * 3 ); // 楕円を描画
         pop();
 
         //一時保存を呼び出す
         pop();
-    
+    }
+
+        
 }
 
 function mouseClicked(){
